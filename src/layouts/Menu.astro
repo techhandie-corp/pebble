@@ -1,0 +1,21 @@
+---
+const menuoptions = ["m1","m2","m3"];
+const {menuid} = Astro.props;
+function getId() {
+  menuoptions.forEach((opt) => {
+    let idMark: any = document.getElementById(opt);
+    idMark.addEventListener("click", (event: MouseEvent) => {
+      let targetid = event.target.id;
+      menuid = targetid;
+    });
+  });
+};
+---
+
+<navbar>
+    <ul>
+        <li><a id="m1" href="/Page1" onclick("getId")>Option 1</a></li>
+        <li><a id="m2" href="/Page2" onclick("getId")>Option 2</a></li>
+        <li><a id="m3" href="/Page3" onclick("getId")>Option 3</a></li>
+    </ul>    
+</navbar>
