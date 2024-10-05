@@ -1,21 +1,44 @@
 ---
 const menuoptions = ["m1","m2","m3"];
-const {menuid} = Astro.props;
+let menuid = Astro.props;
 function getId() {
   menuoptions.forEach((opt) => {
     let idMark: any = document.getElementById(opt);
     idMark.addEventListener("click", (event: MouseEvent) => {
-      let targetid = event.target.id;
+      let targetid = event.target;
       menuid = targetid;
     });
   });
 };
 ---
 
-<navbar>
+<navbar id="nav">
     <ul>
         <li><a id="m1" href="/Page1" onclick("getId")>Option 1</a></li>
         <li><a id="m2" href="/Page2" onclick("getId")>Option 2</a></li>
         <li><a id="m3" href="/Page3" onclick("getId")>Option 3</a></li>
     </ul>    
 </navbar>
+
+<style>
+  #nav {
+    background-color: yellow !important;
+  }
+
+  navbar ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: crimson;
+  }
+
+  li {
+    list-style: none;
+  }
+
+</style>
